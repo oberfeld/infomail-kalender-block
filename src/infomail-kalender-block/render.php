@@ -30,7 +30,15 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use ICal\ICal;
 
-$ical_content = fetch_ical_cached($ical_url);
+$ical_hash = 'ical_' . hash('sha256', $ical_url);
+$ical_content    = get_transient($ical_hash);
+
+if ($ical_content == false) {
+	$request = wp_remote_get($ical_url);
+	$ical_content = wp_remote_retrieve_body($request);
+
+	set_transient($ical_hash, $ical_content, 600);
+}
 
 $ical = new ICal(false, array(
 	'defaultTimeZone'       => 'Europe/Zurich',
@@ -73,22 +81,3 @@ $html .= '</tbody></table>';
 $html .= '</div>';
 
 echo $html;
-
-
-if (! function_exists('fetch_ical_cached')) {
-	function fetch_ical_cached(string $url)
-	{
-		$cache_key = 'ical_' . hash('sha256', $url);
-		$cached    = get_transient($cache_key);
-
-		if ($cached !== false) {
-			return $cached;
-		}
-
-		$request = wp_remote_get($url);
-		$body = wp_remote_retrieve_body($request);
-
-		set_transient($cache_key, $body, 600);
-		return $body;
-	}
-}
