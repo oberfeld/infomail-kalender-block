@@ -75,18 +75,20 @@ $html .= '</div>';
 echo $html;
 
 
-function fetch_ical_cached(string $url)
-{
-	$cache_key = 'ical_' . hash('sha256', $url);
-	$cached    = get_transient($cache_key);
+if (! function_exists('fetch_ical_cached')) {
+	function fetch_ical_cached(string $url)
+	{
+		$cache_key = 'ical_' . hash('sha256', $url);
+		$cached    = get_transient($cache_key);
 
-	if ($cached !== false) {
-		return $cached;
+		if ($cached !== false) {
+			return $cached;
+		}
+
+		$request = wp_remote_get($url);
+		$body = wp_remote_retrieve_body($request);
+
+		set_transient($cache_key, $body, 600);
+		return $body;
 	}
-
-	$request = wp_remote_get($url);
-	$body = wp_remote_retrieve_body($request);
-
-	set_transient($cache_key, $body, 600);
-	return $body;
 }

@@ -19,6 +19,6 @@ Enthält composer-Dependency `johngrogg/ics-parser`.
 
 == Installation ==
 
-- Version in `package.json` und `infomail-calendar-block.php` anpassen
+- Version in `package.json` und `infomail-kalender-block.php` anpassen
 - `build-zip.sh` ausführen.
-- Erstelltes `infomail-calendar-block-?.?.?.zip` als Plugin hochladen.
+- Erstelltes `infomail-kalender-block-?.?.?.zip` als Plugin hochladen.

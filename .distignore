@@ -1,9 +1,7 @@
 # .distignore
 
 # Source & dev files
-src/
 node_modules/
-vendor/
 
 # Config files
 .vscode/

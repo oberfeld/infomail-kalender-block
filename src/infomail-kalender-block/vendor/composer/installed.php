@@ -3,7 +3,7 @@
         'name' => 'cstuder/infomail-kalender-block',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cdf80e3406ed2b62bc4c5cbaa9264e6865e46945',
+        'reference' => 'e52c25680745a392efcf4a6c04106733af0feb4c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'cstuder/infomail-kalender-block' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cdf80e3406ed2b62bc4c5cbaa9264e6865e46945',
+            'reference' => 'e52c25680745a392efcf4a6c04106733af0feb4c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-PLUGIN_SLUG="infomail-calendar-block"
+PLUGIN_SLUG="infomail-kalender-block"
 VERSION=$(node -p "require('./package.json').version")
 DEST=$(realpath "../")/${PLUGIN_SLUG}-${VERSION}.zip
 
