@@ -55,6 +55,11 @@ foreach ($events as $event) {
 	$date = wp_date('j. F', $event_start->getTimestamp());
 	$time = wp_date('H:i', $event_start->getTimestamp());
 
+	// Remove midnight deadlines
+	if ($time === '00:00') {
+		$time = '';
+	}
+
 	$title = esc_html($event->summary ?? '???');
 
 	$html .= '<tr>';

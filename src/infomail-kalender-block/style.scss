@@ -1,7 +1,33 @@
 .infomail-kalender
 {
-	
+	overflow-x: auto;
 }
 
 .infomail-kalender-table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	line-height: 1.5;
+
+	th,
+	td {
+		padding: 0.6rem 0.75rem;
+		text-align: left;
+		vertical-align: top;
+		border-bottom: 1px solid var(--wp--preset--color--contrast-3, #d9d9d9);
+	}
+
+	thead th {
+		font-weight: 600;
+		background: var(--wp--preset--color--base-2, #f3f3f3);
+		color: var(--wp--preset--color--contrast, #1f1f1f);
+	}
+
+	tbody tr:nth-child(even) {
+		background: var(--wp--preset--color--base-2, #f7f7f7);
+	}
+
+	tbody tr:hover {
+		background: color-mix(in srgb, var(--wp--preset--color--base-2, #f3f3f3) 80%, white);
+	}
 }
