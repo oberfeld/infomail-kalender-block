@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -19,7 +19,9 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+//import './editor.scss';
+
+import { PanelBody, DatePicker } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -29,13 +31,68 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes }) {
+	const { startDate, endDate } = attributes
+
+	const formatDate = ( value ) => {
+		if ( ! value ) {
+			return '—';
+		}
+
+		const valueString = String( value );
+		const isoDateMatch = valueString.match( /^(\d{4})-(\d{2})-(\d{2})/ );
+
+		if ( isoDateMatch ) {
+			const [ , year, month, day ] = isoDateMatch;
+			return `${ day }.${ month }.${ year }`;
+		}
+
+		const parsedDate = new Date( valueString );
+
+		if ( Number.isNaN( parsedDate.getTime() ) ) {
+			return valueString;
+		}
+
+		const day = String( parsedDate.getDate() ).padStart( 2, '0' );
+		const month = String( parsedDate.getMonth() + 1 ).padStart( 2, '0' );
+		const year = parsedDate.getFullYear();
+
+		return `${ day }.${ month }.${ year }`;
+	};
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Infomail Kalender Block – hello from the editor!',
-				'infomail-kalender-block'
-			) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={__('Zeitperiode', 'infomail-kalender-block')}>
+					<fieldset style={{ width: '100%', paddingBottom: 16 }}>
+                            <legend style={{ fontWeight: 600, marginBottom: 8 }}>
+                                {__('Startdatum', 'infomail-kalender-block')}
+                            </legend>
+					<DatePicker
+							currentDate={startDate || ''}
+							startOfWeek={ 1 }
+                        onChange={ ( value ) =>
+                            setAttributes( { startDate: value } )
+                        }
+						/>
+					</fieldset>
+					<fieldset style={{ width: '100%' }}>
+                            <legend style={{ fontWeight: 600, marginBottom: 8 }}>
+                                {__('Enddatum', 'infomail-kalender-block')}
+                            </legend>
+					<DatePicker
+							currentDate={endDate || ''}
+							startOfWeek={ 1 }
+                        onChange={ ( value ) =>
+                            setAttributes( { endDate: value } )
+                        }
+						/>
+					</fieldset>
+                </PanelBody>
+			</InspectorControls>
+			<p { ...useBlockProps() }>
+				<em><strong>{__('Infomail Kalender Block', 'infomail-kalender-block')}</strong> – {__('Termine vom', 'infomail-kalender-block')} { formatDate( startDate ) } {__('bis und mit', 'infomail-kalender-block')} { formatDate( endDate ) }</em>
+			</p>
+		</>
 	);
 }

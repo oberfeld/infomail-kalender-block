@@ -1,20 +1,28 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/infomail-kalender-block",
+  "name": "infomail-kalender-block/infomail-kalender-block",
   "version": "0.1.0",
   "title": "Infomail Kalender Block",
   "category": "widgets",
   "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "description": "Zeigt eine Auswahl von Terminen fürs Oberfeld-Infomail in einer Tabelle an.",
   "example": {},
   "supports": {
     "html": false
   },
+  "attributes": {
+    "startDate": {
+      "type": "string",
+      "default": ""
+    },
+    "endDate": {
+      "type": "string",
+      "default": ""
+    }
+  },
   "textdomain": "infomail-kalender-block",
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "render": "file:./render.php",
-  "viewScript": "file:./view.js"
+  "render": "file:./render.php"
 }
