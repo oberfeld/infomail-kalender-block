@@ -9,6 +9,8 @@ Zeigt eine Auswahl von Terminen fürs Oberfeld-Infomail in einer Tabelle an.
 
 Initiale Version mit hardgecodeter Kalender-URL: <https://chischte.oberfeld.be/remote.php/dav/public-calendars/Mr282TY3ekfKGPNF/?export>
 
+Enthält composer-Dependency `johngrogg/ics-parser`.
+
 == Development ==
 
 - WordPress `Studio` starten, Webseite öffnen.

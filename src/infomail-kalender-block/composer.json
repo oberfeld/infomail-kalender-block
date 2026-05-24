@@ -1,0 +1,15 @@
+{
+    "name": "cstuder/infomail-kalender-block",
+    "description": "Zeigt eine Auswahl von Terminen fürs Oberfeld-Infomail in einer Tabelle an",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Studer",
+            "email": "cstuder@existenz.ch"
+        }
+    ],
+    "require": {
+        "johngrogg/ics-parser": "^3.5"
+    }
+}
