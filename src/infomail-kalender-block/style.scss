@@ -26,8 +26,4 @@
 	tbody tr:nth-child(even) {
 		background: var(--wp--preset--color--base-2, #f7f7f7);
 	}
-
-	tbody tr:hover {
-		background: color-mix(in srgb, var(--wp--preset--color--base-2, #f3f3f3) 80%, white);
-	}
 }
