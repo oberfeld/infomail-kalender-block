@@ -26,4 +26,12 @@
 	tbody tr:nth-child(even) {
 		background: var(--wp--preset--color--base-2, #f7f7f7);
 	}
+
+	.infomail-kalender-date {
+		white-space: nowrap;
+	}
+
+	.infomail-kalender-time {
+		white-space: nowrap;
+	}
 }
