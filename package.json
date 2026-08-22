@@ -1,6 +1,6 @@
 {
 	"name": "infomail-kalender-block",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Zeigt eine Auswahl von Terminen fürs Oberfeld-Infomail in einer Tabelle an.",
 	"author": "Christian Studer",
 	"license": "MIT",
